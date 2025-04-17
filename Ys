@@ -1,0 +1,92 @@
+from telegram import Update, ReplyKeyboardMarkup
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+import logging
+
+# Configuración básica
+TOKEN = "7984414524:AAE0PKV5Twk1Asdxx8uIkew11QABF6SJPik"  # ¡Reemplázalo por tu token real!
+ADMIN_ID = 123456789  # Cambia por tu ID de Telegram
+UBICACION = {
+    "latitud": 19.432608,  # Ejemplo: Coordenadas de CDMX
+    "longitud": -99.133209
+}
+
+# Configura logging
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+
+# Menú principal
+keyboard_options = [["📋 Servicios", "📷 Galería"], ["📞 Contacto", "📍 Ubicación"]]
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    try:
+        reply_markup = ReplyKeyboardMarkup(keyboard_options, resize_keyboard=True)
+        await update.message.reply_text(
+            "¡Hola! Soy el asistente de *Carpintería XYZ* 🛠️\n"
+            "¿En qué puedo ayudarte?",
+            reply_markup=reply_markup,
+            parse_mode="Markdown"
+        )
+    except Exception as e:
+        logging.error(f"Error en start: {e}")
+
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    try:
+        text = update.message.text
+        
+        if text == "📋 Servicios":
+            await update.message.reply_text(
+                "🔨 *Nuestros servicios:*\n"
+                "- Muebles a medida\n"
+                "- Cocinas integrales\n"
+                "- Puertas y ventanas\n"
+                "- Restauración\n"
+                "- Diseño personalizado\n\n"
+                "💬 ¿Quieres pedir un presupuesto? Escribe /presupuesto",
+                parse_mode="Markdown"
+            )
+            
+        elif text == "📷 Galería":
+            await update.message.reply_text("🔍 Mira nuestro trabajo en: [enlace_a_tu_galería_o_red_social]")
+            
+        elif text == "📞 Contacto":
+            await update.message.reply_text(
+                "📱 *Contáctanos:*\n"
+                "Tel: 555-1234\n"
+                "WhatsApp: [tu número]\n"
+                "Email: contacto@carpinteriaxyz.com",
+                parse_mode="Markdown"
+            )
+            
+        elif text == "📍 Ubicación":
+            await update.message.reply_location(
+                latitude=UBICACION["latitud"],
+                longitude=UBICACION["longitud"]
+            )
+            
+    except Exception as e:
+        logging.error(f"Error en handle_message: {e}")
+        await update.message.reply_text("⚠️ Ocurrió un error. Por favor intenta nuevamente.")
+
+async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE):
+    logging.error(f"Error global: {context.error}")
+
+if __name__ == "__main__":
+    try:
+        app = Application.builder().token(TOKEN).build()
+        
+        # Comandos
+        app.add_handler(CommandHandler("start", start))
+        
+        # Mensajes
+        app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+        
+        # Manejo de errores
+        app.add_error_handler(error_handler)
+        
+        print("Bot iniciado. Presiona Ctrl+C para detener.")
+        app.run_polling()
+        
+    except Exception as e:
+        logging.critical(f"Error al iniciar el bot: {e}")
