@@ -1,704 +1,173 @@
 <!DOCTYPE html>
-<style>
-
-    /* Estilos generales */
-body {
-    font-family: 'Georgia', serif;
-    line-height: 1.6;
-    color: #4a3a2a;
-    background-color: #f9f5f0;
-    margin: 0;
-    padding: 0;
-}
-
-/* Encabezado */
-header {
-    background: linear-gradient(rgba(74, 58, 42, 0.8), rgba(74, 58, 42, 0.9)), url('fondo-cacao.jpg');
-    background-size: cover;
-    color: #f9f5f0;
-    text-align: center;
-    padding: 4rem 1rem;
-    margin-bottom: 2rem;
-}
-
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-header p {
-    font-size: 1.5rem;
-    font-style: italic;
-}
-
-/* Navegación */
-nav {
-    background-color: #6b4e3b;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-}
-
-nav li {
-    margin: 0 1.5rem;
-}
-
-nav a {
-    color: #f9f5f0;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #d4a76a;
-}
-
-/* Secciones */
-section {
-    padding: 3rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-section:nth-child(even) {
-    background-color: #f0e6d6;
-}
-
-h2 {
-    color: #6b4e3b;
-    font-size: 2.2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #d4a76a;
-    padding-bottom: 0.5rem;
-    display: inline-block;
-}
-
-/* Sección Inicio */
-#inicio {
-    text-align: center;
-    padding: 4rem 1rem;
-}
-
-#inicio h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-#inicio p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-#inicio strong {
-    color: #6b4e3b;
-    font-size: 1.3rem;
-}
-
-#inicio a {
-    display: inline-block;
-    background-color: #6b4e3b;
-    color: #f9f5f0;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 1.5rem;
-    transition: background-color 0.3s;
-}
-
-#inicio a:hover {
-    background-color: #4a3a2a;
-}
-
-/* Sección Producto */
-#producto {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-}
-
-#producto > div {
-    flex: 1;
-    min-width: 300px;
-}
-
-#producto img {
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
-}
-
-#producto img:hover {
-    transform: scale(1.03);
-}
-
-#producto h3 {
-    color: #6b4e3b;
-    font-size: 1.5rem;
-    margin-top: 2rem;
-}
-
-#producto ul {
-    padding-left: 1.5rem;
-}
-
-#producto li {
-    margin-bottom: 0.8rem;
-    position: relative;
-    list-style-type: none;
-    padding-left: 1.5rem;
-}
-
-#producto li:before {
-    content: "•";
-    color: #d4a76a;
-    font-size: 1.5rem;
-    position: absolute;
-    left: 0;
-    top: -0.2rem;
-}
-
-/* Sección Testimonios */
-#testimonios {
-    text-align: center;
-}
-
-#testimonios > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-blockquote {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    max-width: 350px;
-    text-align: left;
-    position: relative;
-}
-
-blockquote:before {
-    content: """;
-    font-family: Georgia, serif;
-    font-size: 5rem;
-    color: #d4a76a;
-    opacity: 0.3;
-    position: absolute;
-    top: -1rem;
-    left: 0.5rem;
-}
-
-blockquote p {
-    font-style: italic;
-    margin-bottom: 1rem;
-}
-
-blockquote footer {
-    font-weight: bold;
-    color: #6b4e3b;
-}
-
-/* Sección Contacto */
-#contacto {
-    text-align: center;
-}
-
-#contacto p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-#contacto strong {
-    font-size: 1.5rem;
-    color: #6b4e3b;
-}
-
-address {
-    font-style: normal;
-    margin: 2rem 0;
-    line-height: 2;
-}
-
-#contacto a {
-    display: inline-block;
-    background-color: #6b4e3b;
-    color: #f9f5f0;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-#contacto a:hover {
-    background-color: #4a3a2a;
-}
-
-/* Pie de página */
-footer {
-    background-color: #4a3a2a;
-    color: #f9f5f0;
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-}
-
-footer p {
-    margin: 0.5rem 0;
-}
-
-footer a {
-    color: #d4a76a;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer a:hover {
-    color: #f9f5f0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    nav li {
-        margin: 0.5rem 0;
-    }
-    
-    #producto {
-        flex-direction: column;
-    }
-    
-    #producto img {
-        width: 100%;
-        height: auto;
-    }
-}
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="E7sNfIIy4sOgY-fmr-11QYK5xNze8rW9yGrlgAOhzlg" />
-    <title>Vino de Cacao Artesanal | Vinos Baracoa.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Auténtico vino de cacao artesanal producido en Baracoa, Cuba. Elaborado tradicionalmente con los mejores granos de cacao de la región. Precio: 300 pesos cubanos.">
+    <meta name="keywords" content="vino de cacao, baracoa, cacao cubano, producto artesanal, bebida tradicional, 300 pesos, regalo típico de cuba">
+    <title>Vino de Cacao Artesanal de Baracoa | 300 pesos | Producto Tradicional Cubano</title>
+    <meta name="author" content="Productor de Vino de Cacao Baracoa">
 </head>
 <body>
     <header>
-        <h1>Vino de Cacao Artesanal</h1>
-        <p>Una experiencia chocolateada que enamora</p>
+        <h1>Vino de Cacao Artesanal de Baracoa</h1>
+        <h2>La auténtica experiencia del cacao cubano</h2>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href
-</style>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="compra tu vino de cacao en baracoa a 300 la botella." >
-    <title>Vino de Cacao Artesanal | Delicia Chocolateada</title>
-</head>
-<body>
-    <header>
-        <h1>Vino de Cacao Artesanal</h1>
-        <p>Una experiencia chocolateada que enamora</p>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#producto">Nuestro Vino</a></li>
-            <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
-    
-    <section id="inicio">
-        <h2>Descubre el placer del cacao en cada sorbo</h2>
-        <p>Elaborado artesanalmente con los mejores granos de cacao de la región</p>
-        <p><strong>¡Solo $300 por botella!</strong></p>
-        <p>🔹 <strong>Promoción especial:</strong> Trae tu envase y recibe $20 de descuento</p>
-        <a href="#contacto">¡Quiero el mío!</a>
-    </section>
-    
-    <section id="producto">
-        <h2>Nuestro Exquisito Vino de Cacao</h2>
-        <div>
-            <img src="botella-vino-cacao.jpg" alt="Botella de vino de cacao" width="400">
-        </div>
-        <div>
-            <p>Nuestro vino de cacao es una creación única que combina la tradición vinícola con el intenso sabor del cacao puro.</p>
+
+    <main>
+        <article>
+            <h2>Descubre nuestro exquisito vino de cacao</h2>
+            <p>Elaborado artesanalmente en <strong>Baracoa</strong>, la capital del cacao en Cuba, nuestro vino de cacao es un producto único que conserva las tradiciones centenarias de la región.</p>
             
-            <h3>¿Por qué elegir nuestro vino?</h3>
-            <ul>
-                <li>Elaborado con cacao 100% orgánico</li>
-                <li>Proceso artesanal que preserva los nutrientes</li>
-                <li>Perfecto balance entre dulzor y amargor</li>
-                <li>Ideal para acompañar postres o disfrutar solo</li>
-                <li>Presentación ecológica (trae tu envase)</li>
-            </ul>
-        </div>
-    </section>
-    
-    <section id="testimonios">
-        <h2>Lo que dicen nuestros clientes</h2>
-        <div>
-            <blockquote>
-                <p>"El vino de cacao superó todas mis expectativas. El aroma es increíble y el sabor es tan complejo que cada sorbo es una nueva experiencia. ¡Mi nuevo favorito!"</p>
-                <footer>- Ana M., Chef Pastelera</footer>
-            </blockquote>
-            
-            <blockquote>
-                <p>"Compré varias botellas para regalar en Navidad y fue un éxito absoluto. Todos preguntaban dónde lo había conseguido."</p>
-                <footer>- Carlos R., Empresario</footer>
-            </blockquote>
-            
-            <blockquote>
-                <p>"Como amante del chocolate, pensé que lo había probado todo hasta que conocí este vino. La textura sedosa y el final prolongado son perfectos."</p>
-                <footer>- Laura G., Sommelier</footer>
-            </blockquote>
-        </div>
-    </section>
-    
-    <section id="contacto">
-        <h2>¿Listo para probar esta delicia chocolateada?</h2>
-        <p>Contáctanos hoy mismo y reserva tu vino de cacao artesanal</p>
-        <p><strong>$300 por botella</strong></p>
-        <address>
-            📍 Visítanos en: Calle del Cacao 123, Colonia Chocolate, Ciudad Dulce<br>
-            📞 Llama al: 55 1234 5678<br>
-            📧 Escríbenos: info@vinodecacao.com
-        </address>
-        <a href="tel:+525512345678">¡Llámanos ahora!</a>
-    </section>
-    
+            <section>
+                <h3>Características principales</h3>
+                <ul>
+                    <li>Elaborado con granos de cacao 100% naturales</li>
+                    <li>Proceso artesanal que preserva todos los nutrientes</li>
+                    <li>Sabor intenso y aroma inconfundible</li>
+                    <li>Presentación en botella de vidrio de 750ml</li>
+                    <li><strong>Precio: 300 pesos cubanos</strong></li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>¿Por qué elegir nuestro vino de cacao?</h3>
+                <p>Baracoa es reconocida como la región productora del mejor cacao de Cuba. Nuestro vino captura la esencia de esta tierra en cada sorbo, ofreciendo una experiencia gastronómica única.</p>
+                <p>Ideal como regalo, souvenir cubano o para disfrutar en ocasiones especiales.</p>
+            </section>
+
+            <section>
+                <h3>¿Cómo se elabora?</h3>
+                <p>Siguiendo métodos tradicionales transmitidos por generaciones, fermentamos y procesamos los granos de cacao para obtener esta bebida singular que combina notas dulces y amargas características del cacao baracoense.</p>
+            </section>
+        </article>
+
+        <aside>
+            <h3>Dónde encontrarnos</h3>
+            <p>Disponible directamente en <strong>Baracoa, Cuba</strong>. Pregunte por el vino de cacao artesanal a 300 pesos.</p>
+            <p>Producto local, hecho con orgullo baracoense.</p>
+        </aside>
+    </main>
+
     <footer>
-        <p>Vino de Cacao Artesanal © 2023 - Todos los derechos reservados</p>
-        <p>Redes sociales: 
-            <a href="#">Facebook</a> | 
-            <a href="#">Instagram</a> | 
-            <a href="#">WhatsApp</a>
-        </p>
-        <p><small>El consumo de alcohol es para mayores de edad. Bebe con moderación.</small></p>
+        <p>© 2023 Vino de Cacao Artesanal de Baracoa - Todos los derechos reservados</p>
+        <p>El auténtico sabor del cacao cubano por solo 300 pesos</p>
     </footer>
-/
-    
-</html>
-<style>
-rales */
-body {
-    font-family: 'Georgia', serif;
-    line-height: 1.6;
-    color: #4a3a2a;
-    background-color: #f9f5f0;
-    margin: 0;
-    padding: 0;
-}
-
-/* Encabezado */
-header {
-    background: linear-gradient(rgba(74, 58, 42, 0.8), rgba(74, 58, 42, 0.9)), url('fondo-cacao.jpg');
-    background-size: cover;
-    color: #f9f5f0;
-    text-align: center;
-    padding: 4rem 1rem;
-    margin-bottom: 2rem;
-}
-
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-header p {
-    font-size: 1.5rem;
-    font-style: italic;
-}
-
-/* Navegación */
-nav {
-    background-color: #6b4e3b;
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-}
-
-nav li {
-    margin: 0 1.5rem;
-}
-
-nav a {
-    color: #f9f5f0;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #d4a76a;
-}
-
-/* Secciones */
-section {
-    padding: 3rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-section:nth-child(even) {
-    background-color: #f0e6d6;
-}
-
-h2 {
-    color: #6b4e3b;
-    font-size: 2.2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #d4a76a;
-    padding-bottom: 0.5rem;
-    display: inline-block;
-}
-
-/* Sección Inicio */
-#inicio {
-    text-align: center;
-    padding: 4rem 1rem;
-}
-
-#inicio h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-#inicio p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-#inicio strong {
-    color: #6b4e3b;
-    font-size: 1.3rem;
-}
-
-#inicio a {
-    display: inline-block;
-    background-color: #6b4e3b;
-    color: #f9f5f0;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 1.5rem;
-    transition: background-color 0.3s;
-}
-
-#inicio a:hover {
-    background-color: #4a3a2a;
-}
-
-/* Sección Producto */
-#producto {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-}
-
-#producto > div {
-    flex: 1;
-    min-width: 300px;
-}
-
-#producto img {
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
-}
-
-#producto img:hover {
-    transform: scale(1.03);
-}
-
-#producto h3 {
-    color: #6b4e3b;
-    font-size: 1.5rem;
-    margin-top: 2rem;
-}
-
-#producto ul {
-    padding-left: 1.5rem;
-}
-
-#producto li {
-    margin-bottom: 0.8rem;
-    position: relative;
-    list-style-type: none;
-    padding-left: 1.5rem;
-}
-
-#producto li:before {
-    content: "•";
-    color: #d4a76a;
-    font-size: 1.5rem;
-    position: absolute;
-    left: 0;
-    top: -0.2rem;
-}
-
-/* Sección Testimonios */
-#testimonios {
-    text-align: center;
-}
-
-#testimonios > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-blockquote {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    max-width: 350px;
-    text-align: left;
-    position: relative;
-}
-
-blockquote:before {
-    content: """;
-    font-family: Georgia, serif;
-    font-size: 5rem;
-    color: #d4a76a;
-    opacity: 0.3;
-    position: absolute;
-    top: -1rem;
-    left: 0.5rem;
-}
-
-blockquote p {
-    font-style: italic;
-    margin-bottom: 1rem;
-}
-
-blockquote footer {
-    font-weight: bold;
-    color: #6b4e3b;
-}
-
-/* Sección Contacto */
-#contacto {
-    text-align: center;
-}
-
-#contacto p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-#contacto strong {
-    font-size: 1.5rem;
-    color: #6b4e3b;
-}
-
-address {
-    font-style: normal;
-    margin: 2rem 0;
-    line-height: 2;
-}
-
-#contacto a {
-    display: inline-block;
-    background-color: #6b4e3b;
-    color: #f9f5f0;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-#contacto a:hover {
-    background-color: #4a3a2a;
-}
-
-/* Pie de página */
-footer {
-    background-color: #4a3a2a;
-    color: #f9f5f0;
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-}
-
-footer p {
-    margin: 0.5rem 0;
-}
-
-footer a {
-    color: #d4a76a;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-footer a:hover {
-    color: #f9f5f0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+</body>
+    <style>
+    /* Estilos generales */
+    body {
+        font-family: 'Georgia', serif;
+        line-height: 1.6;
+        color: #3a2c1a;
+        background-color: #f8f4e9;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
     }
-    
-    nav li {
+
+    /* Encabezado */
+    header {
+        background: linear-gradient(to right, #5e2c04, #8b4513);
+        color: #f8f4e9;
+        padding: 2rem 1rem;
+        text-align: center;
+        border-bottom: 5px solid #d4a76a;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        color: #5e2c04;
+        margin-top: 2rem;
+        border-bottom: 2px solid #d4a76a;
+        padding-bottom: 0.5rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+        color: #8b4513;
+        margin-top: 1.5rem;
+    }
+
+    /* Contenido principal */
+    main {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+    }
+
+    article {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    /* Listas */
+    ul {
+        padding-left: 1.5rem;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Texto destacado */
+    strong {
+        color: #8b4513;
+        font-weight: bold;
+    }
+
+    /* Barra lateral */
+    aside {
+        background-color: #f0e6d2;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #d4a76a;
+    }
+
+    /* Pie de página */
+    footer {
+        background-color: #5e2c04;
+        color: #f8f4e9;
+        text-align: center;
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    footer p {
         margin: 0.5rem 0;
     }
-    
-    #producto {
-        flex-direction: column;
-    }
-    
-    #producto img {
-        width: 100%;
-        height: auto;
-    }
-}
-</style>
 
+    /* Efectos de hover */
+    a:hover {
+        color: #d4a76a;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+        }
+        
+        main {
+            padding: 0 1rem;
+        }
+        
+        article {
+            padding: 1.5rem;
+        }
+    }
+        </style>
+</html>
