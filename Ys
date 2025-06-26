@@ -1,0 +1,233 @@
+import logging
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackQueryHandler, ContextTypes
+import pandas as pd
+from io import BytesIO
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Configuración de logging
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+logger = logging.getLogger(__name__)
+
+# Datos de las hojas de Excel (simulados)
+# En una implementación real, cargarías el archivo Excel real
+SHEET_DATA = {
+    "NIVEL 0": {
+        "columns": ["OPERACIONES", "INVERSION", "GANANCIAS", "TOTAL", "GAN OPERACION", 
+                   "PAGO", "% PAGO", "COEFICIENTE", "GANANCIA TOTAL", "DISPONIBILIDAD"],
+        "data": [
+            [1, 1, 0.9, 1.9, "", 1.9, 90, 0.09, "", ""],
+            ["COMPUESTO", 1.9, 1.71, 3.61, 2.61, "", "", "", 2.61, 1],
+            [2, 1.09, 0.981, 2.071, "", "", "", 0.18, "", ""],
+            ["COMPUESTO", 2.071, 1.8639, 3.9349, 2.8449, "", "", "", 1.8449, 2.09],
+            [3, 1.2862, 1.15758, 2.44378, "", "", "", 0.27, "", ""],
+            ["COMPUESTO", 2.44378, 2.1994, 4.64318, 3.35698, "", "", "", 1.26698, 3.3762],
+            [4, 1.63347, 1.47013, 3.1036, "", "", "", 0.36, "", ""],
+            ["COMPUESTO", 3.1036, 2.79324, 5.89684, 4.26337, "", "", "", 0.88717, 5.00967],
+            [5, 2.22152, 1.99937, 4.2209, "", "", "", 0.45, "", ""],
+            ["COMPUESTO", 4.2209, 3.79881, 8.0197, 5.79818, "", "", "", 0.78851, 7.2312]
+        ]
+    },
+    "2%": {
+        "columns": ["OPERACIONES", "INVERSION", "GANANCIAS", "TOTAL", "GAN OPERACION", 
+                   "PAGO", "% PAGO", "COEFICIENTE", "GANANCIA TOTAL", "DISPONIBILIDAD"],
+        "data": [
+            [1, 0.69784, 0.57921, 1.27705, "", 1.83, 83, 0.13972, "", ""],
+            ["COMPUESTO", 1.27705, 1.05995, 2.337, 1.63916, "", "", "", 1.63916, 0.69784],
+            [2, 0.79534, 0.66013, 1.45547, "", "", "", 0.27943, "", ""],
+            ["COMPUESTO", 1.45547, 1.20804, 2.66351, 1.86817, "", "", "", 1.17033, 1.49318]
+        ]
+    },
+    "3%": {
+        "columns": ["OPERACIONES", "INVERSION", "GANANCIAS", "TOTAL", "GAN OPERACION", 
+                   "PAGO", "% PAGO", "COEFICIENTE", "GANANCIA TOTAL", "DISPONIBILIDAD"],
+        "data": [
+            [1, 0.8723, 0.72401, 1.59631, "", 1.83, 83, 0.13972, "", ""],
+            ["COMPUESTO", 1.59631, 1.32494, 2.92125, 2.04895, "", "", "", 2.04895, 0.8723],
+            [2, 0.99417, 0.82517, 1.81934, "", "", "", 0.44354, "", ""],
+            ["COMPUESTO", 1.81934, 1.51005, 3.32939, 2.33522, "", "", "", 1.46292, 1.86647]
+        ]
+    }
+}
+
+# Estados de conversación
+GETTING_VAR1, GETTING_VAR2, SELECTING_SHEET = range(3)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Envía un mensaje cuando se emite el comando /start."""
+    user = update.effective_user
+    await update.message.reply_text(
+        f"Hola {user.first_name}! Soy un bot que replica módulos de Excel.\n\n"
+        "Por favor, introduce el primer valor (equivalente a C2 en Excel):"
+    )
+    return GETTING_VAR1
+
+async def get_var1(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Guarda la primera variable y pide la segunda."""
+    context.user_data['var1'] = update.message.text
+    
+    await update.message.reply_text(
+        f"Valor 1 guardado: {context.user_data['var1']}\n\n"
+        "Ahora introduce el segundo valor (equivalente a H2 en Excel):"
+    )
+    return GETTING_VAR2
+
+async def get_var2(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Guarda la segunda variable y muestra las opciones de hoja."""
+    context.user_data['var2'] = update.message.text
+    
+    keyboard = [
+        [InlineKeyboardButton("NIVEL 0", callback_data="NIVEL 0")],
+        [InlineKeyboardButton("2%", callback_data="2%")],
+        [InlineKeyboardButton("3%", callback_data="3%")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    
+    await update.message.reply_text(
+        f"Valores recibidos:\n"
+        f"Variable 1 (C2): {context.user_data['var1']}\n"
+        f"Variable 2 (H2): {context.user_data['var2']}\n\n"
+        "Selecciona el módulo que deseas ver:",
+        reply_markup=reply_markup
+    )
+    return SELECTING_SHEET
+
+async def select_sheet(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Muestra la tabla correspondiente a la hoja seleccionada."""
+    query = update.callback_query
+    await query.answer()
+    
+    sheet_name = query.data
+    var1 = context.user_data.get('var1', 'N/A')
+    var2 = context.user_data.get('var2', 'N/A')
+    
+    # Obtener datos de la hoja seleccionada
+    sheet_data = SHEET_DATA.get(sheet_name, {})
+    columns = sheet_data.get("columns", [])
+    data = sheet_data.get("data", [])
+    
+    if not data:
+        await query.edit_message_text("No se encontraron datos para esta hoja.")
+        return
+    
+    # Crear tabla formateada
+    table = generate_table(columns, data, var1, var2)
+    
+    # También podemos generar una imagen de la tabla
+    image = generate_table_image(columns, data, var1, var2, sheet_name)
+    
+    # Enviar respuesta
+    await query.edit_message_text(
+        f"📊 Módulo: {sheet_name}\n"
+        f"🔹 Variable 1 (C2): {var1}\n"
+        f"🔹 Variable 2 (H2): {var2}\n\n"
+        f"```\n{table}\n```",
+        parse_mode='Markdown'
+    )
+    
+    # Enviar imagen de la tabla
+    await context.bot.send_photo(
+        chat_id=query.message.chat_id,
+        photo=image,
+        caption=f"Tabla visual - {sheet_name}"
+    )
+    
+    return -1  # Termina la conversación
+
+def generate_table(columns, data, var1, var2):
+    """Genera una representación de texto de la tabla."""
+    # Aplicar las variables a los datos (simulado)
+    # En una implementación real, modificarías los datos según las variables
+    
+    # Crear encabezado
+    header = " | ".join(columns)
+    separator = "-" * len(header)
+    
+    # Crear filas
+    rows = []
+    for row in data:
+        if isinstance(row[0], str):  # Fila de texto
+            row_str = " | ".join(str(x) if x != "" else " " for x in row)
+        else:  # Fila numérica
+            row_str = " | ".join(f"{x:.2f}" if isinstance(x, (float, int)) else " " for x in row)
+        rows.append(row_str)
+    
+    # Unir todo
+    table = "\n".join([header, separator] + rows)
+    return table
+
+def generate_table_image(columns, data, var1, var2, sheet_name):
+    """Genera una imagen de la tabla usando matplotlib."""
+    # Crear figura
+    fig, ax = plt.subplots(figsize=(10, 4))
+    ax.axis('off')
+    
+    # Preparar datos para la tabla
+    table_data = []
+    for row in data:
+        formatted_row = []
+        for item in row:
+            if isinstance(item, (float, int)):
+                formatted_row.append(f"{item:.2f}" if item != "" else " ")
+            else:
+                formatted_row.append(str(item) if item != "" else " ")
+        table_data.append(formatted_row)
+    
+    # Crear tabla
+    table = ax.table(
+        cellText=table_data,
+        colLabels=columns,
+        loc='center',
+        cellLoc='center'
+    )
+    
+    # Estilo de la tabla
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    table.scale(1.2, 1.2)
+    
+    # Título
+    plt.title(f"Módulo: {sheet_name}\nC2={var1}, H2={var2}", fontsize=10)
+    
+    # Guardar imagen en un buffer
+    buf = BytesIO()
+    plt.savefig(buf, format='png', bbox_inches='tight', dpi=150)
+    plt.close()
+    buf.seek(0)
+    
+    return buf
+
+async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Cancela y termina la conversación."""
+    await update.message.reply_text(
+        'Operación cancelada. Usa /start para comenzar de nuevo.'
+    )
+    return -1
+
+def main() -> None:
+    """Inicia el bot."""
+    # Crea la aplicación y pasa el token de tu bot
+    application = Application.builder().token("TU_TOKEN_AQUI").build()
+
+    # Maneja diferentes comandos y mensajes
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler('start', start)],
+        states={
+            GETTING_VAR1: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_var1)],
+            GETTING_VAR2: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_var2)],
+            SELECTING_SHEET: [CallbackQueryHandler(select_sheet)]
+        },
+        fallbacks=[CommandHandler('cancel', cancel)],
+    )
+
+    application.add_handler(conv_handler)
+
+    # Ejecuta el bot hasta que se presione Ctrl-C
+    application.run_polling()
+
+if __name__ == '__main__':
+    main()
