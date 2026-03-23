@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artículo | Blog de Osiel Osorio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { bg: '#0f172a', card: '#1e293b', text: '#f1f5f9' },
+                        light: { bg: '#f8fafc', card: '#ffffff', text: '#1e293b' },
+                        primary: '#3b82f6',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Osiel Osorio</span>
+                </a>
+                
+                <div class="flex items-center space-x-8">
+                    <a href="blog.html" class="nav-link" data-en="Back to Blog" data-es="Volver al Blog">Volver al Blog</a>
+                    <div class="flex items-center gap-4">
+                        <button id="lang-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <span id="lang-text" class="font-medium text-sm">EN</span>
+                        </button>
+                        <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+                            <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <article class="pt-32 pb-20 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="space-y-6 mb-12">
+                <div class="flex items-center gap-4">
+                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-primary text-xs font-bold rounded-full uppercase" data-en="Guide" data-es="Guía">Guía</span>
+                    <span class="text-xs text-gray-500">Oct 12, 2024</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold" data-en="What do I need for a website?" data-es="¿Qué necesito para un sitio web?">¿Qué necesito para un sitio web?</h1>
+                <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+                    <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold">OO</div>
+                    <div>
+                        <p class="font-bold">Osiel Osorio</p>
+                        <p class="text-xs text-gray-500">Web Developer & Telecom Engineer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prose dark:prose-invert max-w-none space-y-6 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1200" alt="Web Development" class="rounded-3xl shadow-xl mb-8">
+                
+                <p data-en="Creating a website can seem like a complicated process, but it's simpler than you think if you follow these steps." data-es="Crear un sitio web puede parecer un proceso complicado, pero es más sencillo de lo que piensas si sigues estos pasos.">Crear un sitio web puede parecer un proceso complicado, pero es más sencillo de lo que piensas si sigues estos pasos.</p>
+                
+                <h2 class="text-2xl font-bold text-dark-text dark:text-white" data-en="1. Domain Name" data-es="1. Nombre de Dominio">1. Nombre de Dominio</h2>
+                <p data-en="It's your address on the internet (e.g., www.yourbusiness.com). It should be easy to remember and represent your brand." data-es="Es tu dirección en internet (ej. www.tunegocio.com). Debe ser fácil de recordar y representar tu marca."></p>
+                
+                <h2 class="text-2xl font-bold text-dark-text dark:text-white" data-en="2. Web Hosting" data-es="2. Hosting Web">2. Hosting Web</h2>
+                <p data-en="It's where your website's files are stored. For static sites, GitHub Pages is an excellent free option." data-es="Es el lugar donde se guardan los archivos de tu sitio. Para sitios estáticos, GitHub Pages es una excelente opción gratuita."></p>
+
+                <h2 class="text-2xl font-bold text-dark-text dark:text-white" data-en="3. Design and Development" data-es="3. Diseño y Desarrollo">3. Diseño y Desarrollo</h2>
+                <p data-en="This is where the magic happens. A good design must be professional, responsive (works on mobile), and fast." data-es="Aquí es donde ocurre la magia. Un buen diseño debe ser profesional, responsive (que funcione en móviles) y rápido."></p>
+
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-8 rounded-3xl border border-blue-100 dark:border-blue-800 my-12">
+                    <h4 class="text-xl font-bold text-primary mb-4" data-en="Need help starting?" data-es="¿Necesitas ayuda para empezar?">¿Necesitas ayuda para empezar?</h4>
+                    <p class="mb-6" data-en="I can help you with the entire process, from choosing the name to the final deployment." data-es="Puedo ayudarte con todo el proceso, desde la elección del nombre hasta el despliegue final."></p>
+                    <a href="index.html#contacto" class="inline-block bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-blue-600 transition-all" data-en="Free Consultation" data-es="Consulta Gratis">Consulta Gratis</a>
+                </div>
+            </div>
+
+            <!-- Share -->
+            <div class="border-t border-gray-100 dark:border-gray-800 mt-16 pt-8 flex justify-between items-center">
+                <span class="font-bold" data-en="Share article" data-es="Compartir artículo">Compartir artículo</span>
+                <div class="flex gap-4">
+                    <button class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:text-primary transition-colors"><i data-lucide="twitter"></i></button>
+                    <button class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:text-primary transition-colors"><i data-lucide="linkedin"></i></button>
+                    <button class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:text-primary transition-colors"><i data-lucide="link"></i></button>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Osiel Osorio</span>
+                <p class="text-gray-500 text-sm mt-2">© 2024 - <span data-en="All rights reserved" data-es="Todos los derechos reservados">Todos los derechos reservados</span></p>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://github.com/OsielOsorio9" target="_blank" class="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:text-primary transition-colors">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="https://wa.me/5351196751" target="_blank" class="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:text-primary transition-colors">
+                    <i data-lucide="message-circle"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
