@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Entrego Trabajos Web | Blog de Osiel Osorio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: { bg: '#0f172a', card: '#1e293b', text: '#f1f5f9' },
+                        light: { bg: '#f8fafc', card: '#ffffff', text: '#1e293b' },
+                        primary: '#3b82f6',
+                        accent: '#06b6d4'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Osiel Osorio</span>
+                </a>
+                
+                <div class="flex items-center space-x-8">
+                    <a href="blog.html" class="nav-link" data-en="Back to Blog" data-es="Volver al Blog">Volver al Blog</a>
+                    <div class="flex items-center gap-4">
+                        <button id="lang-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <span id="lang-text" class="font-medium text-sm">EN</span>
+                        </button>
+                        <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                            <i data-lucide="moon" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+                            <i data-lucide="sun" class="w-5 h-5 block dark:hidden text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <article class="pt-32 pb-20 px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="space-y-6 mb-12">
+                <div class="flex items-center gap-4">
+                    <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-500 text-xs font-bold rounded-full uppercase" data-en="Process" data-es="Proceso">Proceso</span>
+                    <span class="text-xs text-gray-500">Mar 25, 2026</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold" data-en="How I Deliver Web Projects" data-es="Cómo Entrego Proyectos Web">Cómo Entrego Proyectos Web</h1>
+                <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl">
+                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold">OO</div>
+                    <div>
+                        <p class="font-bold">Osiel Osorio</p>
+                        <p class="text-xs text-gray-500">Web Developer & Telecom Engineer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="prose dark:prose-invert max-w-none space-y-6 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                <img src="https://images.unsplash.com/photo-160058545-5848-2d7c1e3a2f?auto=format&fit=crop&q=80&w=1200" alt="Web Development Process" class="rounded-3xl shadow-xl mb-8">
+                
+                <p data-en="Many clients ask me: 'How do you deliver web projects?' I want to share my complete process so you understand exactly how we'll work together from start to finish." data-es="Muchos clientes me preguntan: '¿Cómo entregas los proyectos web?' Quiero compartir mi proceso completo para que entiendas exactamente cómo trabajaremos juntos desde el inicio hasta el final.">Muchos clientes me preguntan: '¿Cómo entregas los proyectos web?' Quiero compartir mi proceso completo para que entiendas exactamente cómo trabajaremos juntos desde el inicio hasta el final.</p>
+                
+                <h2 class="text-2xl font-bold text-dark-text dark:text-white" data-en="My Complete Delivery Process" data-es="Mi Proceso Completo de Entrega">Mi Proceso Completo de Entrega</h2>
+                
+                <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-2xl border border-blue-100 dark:border-blue-800 my-8">
+                    <h4 class="text-lg font-bold text-primary mb-4" data-en="🎯 Step 1: Initial Consultation" data-es="🎯 Paso 1: Consulta Inicial">🎯 Paso 1: Consulta Inicial</h4>
+                    <p data-en="We discuss your needs, goals, and vision for your website. I'll show you examples and provide recommendations based on your specific requirements." data-es="Discutimos tus necesidades, objetivos y visión para tu página web. Te mostraré ejemplos y proporcionaré recomendaciones basadas en tus requisitos específicos.">Discutimos tus necesidades, objetivos y visión para tu página web. Te mostraré ejemplos y proporcionaré recomendaciones basadas en tus requisitos específicos.</p>
+                </div>
+
+                <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-2xl border border-green-100 dark:border-green-800 my-8">
+                    <h4 class="text-lg font-bold text-green-600 mb-4" data-en="📋 Step 2: Design & Development" data-es="📋 Paso 2: Diseño y Desarrollo">📋 Paso 2: Diseño y Desarrollo</h4>
+                    <p data-en="I create your website according to your requirements. You'll see progress through regular updates and can provide feedback at any time." data-es="Creo tu página web según tus requisitos. Verás el progreso a través de actualizaciones regulares y podrás proporcionar retroalimentación en cualquier momento.">Creo tu página web según tus requisitos. Verás el progreso a través de actualizaciones regulares y podrás proporcionar retroalimentación en cualquier momento.</p>
+                </div>
+
+                <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-2xl border border-purple-100 dark:border-purple-800 my-8">
+                    <h4 class="text-lg font-bold text-purple-600 mb-4" data-en="🚀 Step 3: Review & Revisions" data-es="🚀 Paso 3: Revisión y Ajustes">🚀 Paso 3: Revisión y Ajustes</h4>
+                    <p data-en="You review the website and request any changes. I make all necessary adjustments until you're completely satisfied." data-es="Revisas la página web y solicitas cualquier cambio. Realizo todos los ajustes necesarios hasta que estés completamente satisfecho.">Revisas la página web y solicitas cualquier cambio. Realizo todos los ajustes necesarios hasta que estés completamente satisfecho.</p>
+                </div>
+
+                <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-2xl border border-orange-100 dark:border-orange-800 my-8">
+                    <h4 class="text-lg font-bold text-orange-600 mb-4" data-en="✅ Step 4: Final Delivery" data-es="✅ Paso 4: Entrega Final">✅ Paso 4: Entrega Final</h4>
+                    <p data-en="I deliver the final files and provide all necessary documentation. I'll also help you set up hosting and make sure everything works perfectly." data-es="Entrego los archivos finales y proporciono toda la documentación necesaria. También te ayudaré a configurar el alojamiento y me aseguraré que todo funcione perfectamente.">Entrego los archivos finales y proporciono toda la documentación necesaria. También te ayudaré a configurar el alojamiento y me aseguraré que todo funcione perfectamente.</p>
+                </div>
+
+                <h2 class="text-2xl font-bold text-dark-text dark:text-white" data-en="Payment Schedule" data-es="Cronograma de Pagos">Cronograma de Pagos</h2>
+                <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl">
+                    <p data-en="I understand that each project is different, but here's a typical payment structure that works well for Cuban businesses:" data-es="Entiendo que cada proyecto es diferente, pero aquí tienes una estructura de pagos típica que funciona bien para negocios cubanos:">Entiendo que cada proyecto es diferente, pero aquí tienes una estructura de pagos típica que funciona bien para negocios cubanos:</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-white dark:bg-dark-card p-4 rounded-xl border border-gray-100 dark:border-gray-800">
+                            <h4 class="font-bold text-orange-600 mb-3" data-en="Initial Payment" data-es="Pago Inicial">Pago Inicial</h4>
+                            <p class="text-sm" data-en="50% upfront to begin work. Shows commitment and covers initial design phase." data-es="50% por adelantado para comenzar el trabajo. Demuestra compromiso y cubre la fase inicial de diseño.">50% por adelantado para comenzar el trabajo. Demuestra compromiso y cubre la fase inicial de diseño.</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-dark-card p-4 rounded-xl border border-gray-100 dark:border-gray-800">
+                            <h4 class="font-bold text-green-600 mb-3" data-en="Mid-Project Payment" data-es="Pago a Mitad">Pago a Mitad</h4>
+                            <p class="text-sm" data-en="25% when design is approved and development begins." data-es="25% cuando el diseño está aprobado y el desarrollo comienza.">25% cuando el diseño está aprobado y el desarrollo comienza.</p>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-dark-card p-4 rounded-xl border border-gray-100 dark:border-gray-800">
+                            <h4 class="font-bold text-primary mb-3" data-en="Final Payment" data-es="Pago Final">Pago Final</h4>
+                            <p class="text-sm" data-en="25% upon final delivery and approval." data-es="25% al momento de la entrega final y aprobación.">25% al momento de la entrega final y aprobación.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-dark-text dark:text-white" data-en="What You Get" data-es="Qué Recibes">Qué Recibes</h2>
+                <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-2xl border border-green-100 dark:border-green-800 my-8">
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong data-en="Complete website files" data-es="Archivos completos del sitio web">Archivos completos del sitio web</strong>
+                                <p data-en="All HTML, CSS, JavaScript, and image files" data-es="Todos los archivos HTML, CSS, JavaScript e imágenes">Todos los archivos HTML, CSS, JavaScript e imágenes</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong data-en="Documentation" data-es="Documentación">Documentación</strong>
+                                <p data-en="Instructions for updates and maintenance" data-es="Instrucciones para actualizaciones y mantenimiento">Instrucciones para actualizaciones y mantenimiento</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong data-en="Hosting setup" data-es="Configuración de hosting">Configuración de hosting</strong>
+                                <p data-en="I'll help you set up your website on your chosen hosting platform" data-es="Te ayudaré a configurar tu sitio web en tu plataforma de hosting elegida">Te ayudaré a configurar tu sitio web en tu plataforma de hosting elegida</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong data-en="30 days support" data-es="30 días de soporte">30 días de soporte</strong>
+                                <p data-en="Free assistance for any issues that arise in the first month" data-es="Asistencia gratuita para cualquier problema que surja en el primer mes">Asistencia gratuita para cualquier problema que surja en el primer mes</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <h2 class="text-2xl font-bold text-dark-text dark:text-white" data-en="Why Choose Me?" data-es="¿Por Qué Elegirme?">¿Por Qué Elegirme?</h2>
+                <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-2xl border border-orange-100 dark:border-orange-800 my-8">
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-orange-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong data-en="Transparent Process" data-es="Proceso Transparente">Proceso Transparente</strong>
+                                <p data-en="You always know what's happening with your project" data-es="Siempre sabes qué está pasando con tu proyecto">Siempre sabes qué está pasando con tu proyecto</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-orange-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong data-en="Cuban Market Expertise" data-es="Experto en Mercado Cubano">Experto en Mercado Cubano</strong>
+                                <p data-en="I understand Cuban business needs and internet conditions" data-es="Entiendo las necesidades de negocios cubanos y condiciones de internet">Entiendo las necesidades de negocios cubanos y condiciones de internet</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-orange-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong data-en="Flexible Payment Options" data-es="Opciones de Pago Flexibles">Opciones de Pago Flexibles</strong>
+                                <p data-en="Transfermóvil and payment plans that work for Cuban clients" data-es="Transfermóvil y planes de pago que funcionan para clientes cubanos">Transfermóvil y planes de pago que funcionan para clientes cubanos</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-orange-600 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong data-en="Complete Support" data-es="Soporte Completo">Soporte Completo</strong>
+                                <p data-en="I don't disappear after delivery. I'm here to help you succeed." data-es="No desaparezco después de la entrega. Estoy aquí para ayudarte a tener éxito.">No desaparezco después de la entrega. Estoy aquí para ayudarte a tener éxito.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <h2 class="text-2xl font-bold text-dark-text dark:text-white" data-en="Ready to Start Your Project?" data-es="¿Listo para Empezar tu Proyecto?">¿Listo para Empezar tu Proyecto?</h2>
+                <div class="bg-primary/10 p-8 rounded-3xl border border-primary/20 my-12">
+                    <h4 class="text-xl font-bold text-primary mb-4" data-en="🚀 Let's Build Something Amazing Together" data-es="🚀 Construyamos Algo Increíble Juntos">🚀 Construyamos Algo Increíble Juntos</h4>
+                    <p class="mb-6" data-en="Your vision deserves professional execution. Contact me today and let's discuss how to bring your digital dreams to life." data-es="Tu visión merece una ejecución profesional. Contáctame hoy y hablemos de cómo llevar tus sueños digitales a la realidad.">Tu visión merece una ejecución profesional. Contáctame hoy y hablemos de cómo llevar tus sueños digitales a la realidad.</p>
+                    <a href="index.html#contacto" class="inline-block bg-primary text-white font-bold px-8 py-3 rounded-xl hover:bg-blue-600 transition-all" data-en="Start My Project" data-es="Empezar Mi Proyecto">Empezar Mi Proyecto</a>
+                </div>
+            </div>
+
+            <!-- Share -->
+            <div class="border-t border-gray-100 dark:border-gray-800 mt-16 pt-8 flex justify-between items-center">
+                <span class="font-bold" data-en="Share article" data-es="Compartir artículo">Compartir artículo</span>
+                <div class="flex gap-4">
+                    <button class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:text-primary transition-colors"><i data-lucide="twitter"></i></button>
+                    <button class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:text-primary transition-colors"><i data-lucide="linkedin"></i></button>
+                    <button class="p-2 bg-gray-100 dark:bg-gray-800 rounded-full hover:text-primary transition-colors"><i data-lucide="link"></i></button>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100 dark:border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Osiel Osorio</span>
+                <p class="text-gray-500 text-sm mt-2">© 2024 - <span data-en="All rights reserved" data-es="Todos los derechos reservados">Todos los derechos reservados</span></p>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://github.com/OsielOsorio9" target="_blank" class="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:text-primary transition-colors">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="https://wa.me/5351196751" target="_blank" class="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg hover:text-primary transition-colors">
+                    <i data-lucide="message-circle"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
